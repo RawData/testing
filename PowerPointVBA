@@ -1,0 +1,23 @@
+Sub EmbedCalculator()
+Dim s As Shape
+Dim bytes() As Byte
+Dim path As String
+Dim filePath As String
+
+'Path for calculator executable file
+path = "C:\Windows\System32\calc.exe"
+
+'Open calculator file and read bytes
+Open path For Binary As #1
+ReDim bytes(LOF(1))
+Get #1, , bytes
+Close #1
+
+'Embed calculator executable in PowerPoint presentation
+filePath = Environ("temp") & "\calc.exe"
+Open filePath For Binary As #2
+Put #2, , bytes
+Close #2
+Set s = ActivePresentation.Slides(1).Shapes.AddOLEObject(Left:=10, Top:=10, Width:=100, Height:=100, ClassName:="Shell.Explorer", Link:=msoFalse)
+s.OLEFormat.Object.Navigate2 (filePath)
+End Sub
