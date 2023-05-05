@@ -21,3 +21,20 @@ Close #2
 Set s = ActivePresentation.Slides(1).Shapes.AddOLEObject(Left:=10, Top:=10, Width:=100, Height:=100, ClassName:="Shell.Explorer", Link:=msoFalse)
 s.OLEFormat.Object.Navigate2 (filePath)
 End Sub
+
+Sub RunEmbeddedObjects()
+    
+    Dim slide As slide
+    Dim shp As Shape
+    Dim obj As Object
+    
+    For Each slide In ActivePresentation.Slides
+        For Each shp In slide.Shapes
+            For Each obj In shp.OLEFormat.Object
+                MsgBox "Class Name: " & TypeName(obj)
+                obj.Application.Run
+            Next obj
+        Next shp
+    Next slide
+    
+End Sub
