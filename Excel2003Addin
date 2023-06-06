@@ -1,0 +1,49 @@
+using System;
+using System.Runtime.InteropServices;
+using Extensibility;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
+
+namespace Excel2003AddIn
+{
+    [Guid("Your GUID Here"), ComVisible(true), ProgId("Excel2003AddIn.Class1")]
+    public class Class1 : IDTExtensibility2
+    {
+        private CommandBarButton button;
+
+        public void OnConnection(object application, ext_ConnectMode connectMode, object addInInst, ref Array custom)
+        {
+            Application excelApp = (Application)application;
+
+            // Create a new toolbar.
+            CommandBar bar = excelApp.CommandBars.Add("My Bar", MsoBarPosition.msoBarTop, false, true);
+
+            // Add a button to the toolbar.
+            button = (CommandBarButton)bar.Controls.Add(MsoControlType.msoControlButton, Type.Missing, Type.Missing, Type.Missing, true);
+            button.Caption = "My Button";
+            button.Click += new _CommandBarButtonEvents_ClickEventHandler(ButtonClick);
+
+            // Show the toolbar.
+            bar.Visible = true;
+        }
+
+        public void OnDisconnection(ext_DisconnectMode disconnectMode, ref Array custom)
+        {
+            // Clean up when the Add-In is unloaded.
+            if (button != null)
+            {
+                button.Delete();
+                button = null;
+            }
+        }
+
+        public void OnStartupComplete(ref Array custom) { }
+        public void OnBeginShutdown(ref Array custom) { }
+        public void OnAddInsUpdate(ref Array custom) { }
+
+        private void ButtonClick(CommandBarButton ctrl, ref bool cancel)
+        {
+            System.Windows.Forms.MessageBox.Show("Button clicked.");
+        }
+    }
+}
